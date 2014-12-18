@@ -1,0 +1,4 @@
+results/
+.vagrant/
+*.torrent
+*.mp4
