@@ -3,7 +3,7 @@
 # Provisioning script for the Tracker.
 # NB: Run this script as root!
 
-echo ">> Installing Apache/PHP/MariaDB..."
+echo ">> Installing Apache/PHP/MariaDB/git..."
 
 yum install -y httpd php mariadb-server php-mysql git
 

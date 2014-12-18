@@ -7,10 +7,14 @@
 # If not, execute `curl -sL https://rpm.nodesource.com/setup | bash -`
 # and install only nodejs with yum (remove npm below)
 
-echo ">> Installing Nodejs and NPM..."
-yum install -y nodejs npm
+if ! type "peerflix" > /dev/null; then
+	echo ">> Installing Nodejs and NPM..."
+	yum install -y nodejs npm
 
-echo ">> Installing Peerflix..."
-npm install -g peerflix
+	echo ">> Installing Peerflix..."
+	npm install -g peerflix
 
-echo ">> Done!"
+	echo ">> Done!"
+else
+	echo ">> Peerflix is already installed."
+fi
