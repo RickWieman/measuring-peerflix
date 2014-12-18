@@ -8,23 +8,25 @@
 DOWNLOAD_PATH=/vagrant
 TORRENT=${DOWNLOAD_PATH}/movie.torrent
 
-## VAGRANT
+if [[ "$*" != "skip-init" ]]; then
+	## VAGRANT
 
-vagrant up --provision --parallel
+	vagrant up --provision --parallel
 
-## SEEDERS
+	## SEEDERS
 
-echo ">> Starting Deluge daemon..."
-vagrant ssh seeder-1 -c "deluged"
+	echo ">> Starting Deluge daemon..."
+	vagrant ssh seeder-1 -c "deluged"
 
-# We have to wait for deluge to set everything up...
-sleep 5
+	# We have to wait for deluge to set everything up...
+	sleep 5
 
-echo ">> Disabling DHT..."
-vagrant ssh seeder-1 -c "deluge-console \"config -s dht False\""
+	echo ">> Disabling DHT..."
+	vagrant ssh seeder-1 -c "deluge-console \"config -s dht False\""
 
-echo ">> Giving the torrent to deluge..."
-vagrant ssh seeder-1 -c "deluge-console \"add -p ${DOWNLOAD_PATH} ${TORRENT}\""
+	echo ">> Giving the torrent to deluge..."
+	vagrant ssh seeder-1 -c "deluge-console \"add -p ${DOWNLOAD_PATH} ${TORRENT}\""
+fi
 
 ## PEERFLIX
 
