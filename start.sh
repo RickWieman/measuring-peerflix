@@ -26,17 +26,8 @@ vagrant ssh seeder-1 -c "deluge-console \"config -s dht False\""
 echo ">> Giving the torrent to deluge..."
 vagrant ssh seeder-1 -c "deluge-console \"add -p ${DOWNLOAD_PATH} ${TORRENT}\""
 
-
 ## PEERFLIX
 
-echo ">> Running peerflix and measurements (note: in parallel)..."
-for i in { 1..9 }; do
-	vagrant ssh peerflix-${i} -c "peerflix ${TORRENT} > /dev/null &" &
+for i in {1..9}; do
+	vagrant ssh peerflix-${i} -c "bash /vagrant/measurements/run.sh ${TORRENT} &" &
 done
-
-for i in { 1..9 }; do
-	vagrant ssh peerflix-${i} -c "/vagrant/measurements/starting_delay.sh" > results/delay_${i}_start.txt &
-	vagrant ssh peerflix-${i} -c "/vagrant/measurements/skipping_delay.sh" > results/delay_${i}_skip.txt &
-done
-
-echo ">> Script done! Please check the results directory (might be filling up slowly)."
