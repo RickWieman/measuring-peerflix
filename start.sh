@@ -10,7 +10,7 @@ TORRENT=${DOWNLOAD_PATH}/movie.torrent
 
 ## VAGRANT
 
-vagrant up --provision
+vagrant up --provision --parallel
 
 ## SEEDERS
 
