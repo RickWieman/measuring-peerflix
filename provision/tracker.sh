@@ -7,7 +7,7 @@ echo ">> Installing Apache/PHP/MySQL/git..."
 
 yum install -y httpd php mysql-server php-mysql git
 
-echo ">> Starting services and enabling autostart..."
+echo ">> Starting services (not yet enabling autostart)..."
 
 mkdir -p /var/www/html/
 /etc/init.d/httpd start
