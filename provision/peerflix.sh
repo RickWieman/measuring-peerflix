@@ -1,20 +1,24 @@
 #!/bin/bash
 
-# Provisioning script for the Peerflix nodes.
-# NB: Run this script as root!
+# Let's begin with our dependencies =D
+sudo yum install -y git openssl-devel gcc gcc-c++ bzip2-devel
 
-# As we use a recent version of Fedora, we expect nodejs will be in the repo
-# If not, execute `curl -sL https://rpm.nodesource.com/setup | bash -`
-# and install only nodejs with yum (remove npm below)
+# Now, let's update to Python 2.6 (from source)
+wget https://www.python.org/ftp/python/2.6.9/Python-2.6.9.tgz
+tar xvzf Python-2.6.9.tgz
+cd Python-2.6.9
+./configure
+make
+sudo make install
 
-if ! type "peerflix" > /dev/null; then
-	echo ">> Installing Nodejs and NPM..."
-	yum install -y nodejs npm
+# Finally, let's install NodeJS 0.10 (from source)
+cd ..
+git clone --depth 1 git://github.com/joyent/node.git
+cd node
+git checkout v0.10.35
+./configure
+make
+sudo make install
 
-	echo ">> Installing Peerflix..."
-	npm install -g peerflix
-
-	echo ">> Done!"
-else
-	echo ">> Peerflix is already installed."
-fi
+cd ..
+sudo ./peerflix_npm.sh
