@@ -2,8 +2,12 @@
 
 # This file currently only works for Fedora Core 8.
 
+wget --spider http://dev.rickw.nl/log_pl.php?hostname=`hostname`\&status=peerflix_installing_dep
+
 # Let's begin with our dependencies =D
 sudo yum install -y git openssl-devel gcc gcc-c++ bzip2-devel automake make
+
+wget --spider http://dev.rickw.nl/log_pl.php?hostname=`hostname`\&status=peerflix_installing_python
 
 # Now, let's update to Python 2.6 (from source)
 wget https://www.python.org/ftp/python/2.6.9/Python-2.6.9.tgz
@@ -12,6 +16,8 @@ cd Python-2.6.9
 ./configure
 make
 sudo make install
+
+wget --spider http://dev.rickw.nl/log_pl.php?hostname=`hostname`\&status=peerflix_installing_node
 
 # Finally, let's install NodeJS 0.10 (from source)
 cd ..
@@ -23,5 +29,9 @@ git checkout v0.10.35
 make
 sudo make install
 
+wget --spider http://dev.rickw.nl/log_pl.php?hostname=`hostname`\&status=peerflix_installing_peerflix
+
 cd ..
 sudo ./peerflix_npm.sh
+
+wget --spider http://dev.rickw.nl/log_pl.php?hostname=`hostname`\&status=peerflix_ready
