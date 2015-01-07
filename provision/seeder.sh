@@ -7,7 +7,7 @@ wget --spider http://dev.rickw.nl/log_pl.php?hostname=`hostname`\&status=seeder_
 
 if ! type "rtorrent" > /dev/null; then
 	echo ">> Installing rTorrent..."
-	yum install -y rtorrent
+	sudo yum install -y rtorrent
 else
 	echo ">> rTorrent is already installed."
 fi
