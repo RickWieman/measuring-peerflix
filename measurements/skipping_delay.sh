@@ -1,6 +1,8 @@
 #!/bin/bash
 
 start_time=`date +%s%3N`
-curl --header "Range: bytes=107848916-107900000" http://127.0.0.1:8888 > /dev/null
+random1=$[ (( $RANDOM % 200 ) + 10) * 1048576 ]
+random2=`expr ${random1} + 900000`
+curl --header "Range: bytes=${random1}-${random2}" http://127.0.0.1:8888 > /dev/null
 end_time=`date +%s%3N`
 expr ${end_time} - ${start_time}
