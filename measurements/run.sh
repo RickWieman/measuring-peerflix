@@ -2,12 +2,9 @@
 
 # This script launches the actual experiment on a certain node.
 
-HOSTNAME=`cat /etc/hostname`
-RESULT_DIR=/vagrant/results
-SCRIPT_DIR=/vagrant/measurements
-
-# Create result directory if it doesn't exist
-mkdir -p ${RESULT_DIR}
+HOSTNAME=$(hostname)
+RESULT_DIR=/home/delft_peerflix
+SCRIPT_DIR=/home/delft_peerflix/measuring-peerflix/measurements
 
 # Destroy existing sessions
 pkill -9 peerflix
