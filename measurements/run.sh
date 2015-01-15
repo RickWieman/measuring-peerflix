@@ -12,4 +12,4 @@ ${SCRIPT_DIR}/stop.sh
 echo "Started peerflix at `date +%s%3N`... " > ${RESULT_DIR}/${HOSTNAME}_stats.txt
 
 # Start streaming
-peerflix -q -p 54529 --on-listening "bash ${SCRIPT_DIR}/measure.sh" $1
+peerflix -q -p 54529 --on-listening "bash ${SCRIPT_DIR}/measure.sh $1" $2

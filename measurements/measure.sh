@@ -13,4 +13,4 @@ TIMESTAMP=$(date +%s%3N)
 STARTDELAY=$(${SCRIPT_DIR}/starting_delay.sh)
 SKIPDELAY=$(${SCRIPT_DIR}/skipping_delay.sh)
 
-curl http://dev.rickw.nl/log.php -G -d "nodeid=$HOSTNAME&timestamp=$TIMESTAMP&skipDelay=$SKIPDELAY&startDelay=$STARTDELAY"
+curl http://dev.rickw.nl/log.php -G -d "nodeid=$HOSTNAME&timestamp=$TIMESTAMP&skipDelay=$SKIPDELAY&startDelay=$STARTDELAY&experiment=$1"
