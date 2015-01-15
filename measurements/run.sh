@@ -7,8 +7,7 @@ RESULT_DIR=/home/delft_peerflix
 SCRIPT_DIR=/home/delft_peerflix/measuring-peerflix/measurements
 
 # Destroy existing sessions
-pkill -9 peerflix
-rm -rf /tmp/torrent-stream
+${SCRIPT_DIR}/stop.sh
 
 echo "Started peerflix at `date +%s%3N`... " > ${RESULT_DIR}/${HOSTNAME}_stats.txt
 
